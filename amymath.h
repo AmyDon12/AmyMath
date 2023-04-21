@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <cmath>
 
+/*
+2D Geometry: Pythagoras' Theorem
+*/
  static int pythOPP(double Hypotenuse, double Adjacent) {  
 
   // finds the opposite
@@ -36,6 +39,11 @@
    
 }
 
+
+/*
+Unit Conversion, so far: mL~L and g~kg 
+*/
+
 static int ml_L(double ml) {
   //  converts mL to L
   double output = ml / 1000;
@@ -67,6 +75,10 @@ static int kg_G(double kg) {
   return output; 
   
 }
+
+/*
+3D Geometry, Surface area and Volume  
+*/
 
 static int sphVOL(double radius) {
   
@@ -161,3 +173,46 @@ static int cylTSA(double radius, double height) {
   return output;
   
 }
+
+static int prismVOL (double sides, double sidelength, double height) {
+  
+  double output = (sides/4)*height*(pow(sidelength, 2)*cot(M_PI/sides)); 
+  return output;
+  
+}
+
+static int prismTSA(double sides, double sidelength, double height) {
+
+  double output = (sides/2)*(pow(sidelength, 2)*cot(M_PI/sides)+(sides*sidelength*height));
+  return output;
+    
+}
+
+/*
+Trigonometric functions not included in cmath 
+*/
+                   
+static int cot(double x) {
+  
+  // calculates the cotangent of the input number 
+  double output = 1/tan(x);
+  return output;
+
+}
+
+static int sec(double x) {
+  
+  // calculates the secant of the input number
+  double output = 1/cos(x);
+  return output;
+
+}
+
+static int csc(double x) {
+  
+  // calculates the cosecant of the input number
+  double output = 1/sin(x);
+  return output;
+
+}
+                   
