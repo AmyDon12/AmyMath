@@ -1,4 +1,4 @@
-# Extended Math lib for C++, Version α1.2
+# Extended Math lib for C++, Version α1.21
 
 ### *Please note: This project is in Alpha
 
