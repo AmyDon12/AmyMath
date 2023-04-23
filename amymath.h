@@ -88,6 +88,35 @@ static int sphVOL(double radius) {
   
 }
 
+/*
+Trigonometric functions not included in cmath 
+*/
+                   
+static int cot(double x) {
+  
+  // calculates the cotangent of the input number 
+  double output = 1/tan(x);
+  return output;
+
+}
+
+static int sec(double x) {
+  
+  // calculates the secant of the input number
+  double output = 1/cos(x);
+  return output;
+
+}
+
+static int csc(double x) {
+  
+  // calculates the cosecant of the input number
+  double output = 1/sin(x);
+  return output;
+
+}
+                   
+
 static int sphTSA(double radius) {
  
   // finds the total surface area of a sphere using its radius
@@ -187,32 +216,3 @@ static int prismTSA(double sides, double sidelength, double height) {
   return output;
     
 }
-
-/*
-Trigonometric functions not included in cmath 
-*/
-                   
-static int cot(double x) {
-  
-  // calculates the cotangent of the input number 
-  double output = 1/tan(x);
-  return output;
-
-}
-
-static int sec(double x) {
-  
-  // calculates the secant of the input number
-  double output = 1/cos(x);
-  return output;
-
-}
-
-static int csc(double x) {
-  
-  // calculates the cosecant of the input number
-  double output = 1/sin(x);
-  return output;
-
-}
-                   
