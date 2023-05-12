@@ -1,218 +1,151 @@
-#include <iostream>
-#include <stdio.h>
 #include <cmath>
+#include <iostream>
 
-/*
-2D Geometry: Pythagoras' Theorem
-*/
- static int pythOPP(double Hypotenuse, double Adjacent) {  
+struct {
 
-  // finds the opposite
-  static double o  = sqrt(pow(Hypotenuse, 2) - pow(Adjacent, 2));
+  static double opposite(double Hypotenuse, double Adjacent) {  
+  return sqrt(pow(Hypotenuse, 2) - pow(Adjacent, 2));
+  }
 
-  //returns
-  return o;
-  // Remember: length of Hypotenuse can not be less than Adjacent length 
-  // or it will return -2.14748e+9
+  static double hypotenuse(double Opposite, double Adjacent) {
+  return sqrt(pow(Opposite, 2) + pow(Adjacent, 2));
+  }
   
-}
+  static double adjacent(double Hypotenuse, double Opposite) {
+  return sqrt(pow(Hypotenuse, 2) - pow(Opposite, 2));
+  }    
 
-  static int pythHYP(double Opposite, double Adjacent) {
+} pythagoras; 
 
-  // finds the opposite
-  static double h  = sqrt(pow(Opposite, 2) + pow(Adjacent, 2));
+struct {
 
-  // returns
-  return h;
+  static int ml_L(double ml) {
+  return ml / 1000; 
+  }
+
+  static int l_ML(double l) {
+  return l * 1000;
+  }
+
+} convertVolume;
+
+struct {
+
+  static int g_KG(double g) {
+  return g / 1000; 
+  }
+
+  static int kg_G(double kg) {
+  return kg * 1000; 
+  }
+
+} convertMass;
+
+struct {
+
+  static int cot(double x) {
+  return 1/tan(x);
+  }
+
+  static int sec(double x) {
+  return 1/cos(x);
+  }
+
+  static int csc(double x) {
+  return 1/sin(x);
+  }
+
+  static int acot(double x) {
+  return 1/atan(x);
+  }
+
+  static int asec(double x) {
+  return 1/acos(x);
+  }
+
+  static int acsc(double x) {
+  return 1/asin(x);
+  }
+
+} trigonometry;
+
+struct {
+
+  static int volume(double radius) {
+  return (4/3) * M_PI * pow(radius, 3);
+  }
+
+  static int totalSURFACEAREA(double radius) {
+  return (4 * M_PI * pow(radius, 2));
+  }
+
+} sphere;
+
+struct {
   
-}
+  static int volume(double edge) {
+  return pow(edge, 3);   
+  }
 
-  static int pythADJ(double Hypotenuse, double Opposite) {
+  static int totalSURFACEAREA(double edge) { 
+  return pow(6*edge, 2);
+  }
+}  cube;
 
-  // finds the opposite
-  static double a  = sqrt(pow(Hypotenuse, 2) - pow(Opposite, 2));
+struct {
 
-  // returns
-  return a;
-  // Remember: length of Hypotenuse can not be less than Opposite length 
-  // or it will return -2.14748e+9
-   
-}
+  static int totalSURFACEAREA(double edge) {
+  return pow(6*edge, 2);
+  }
 
+  static int volume(double length, double breadth, double height) {
+  return (length * breadth * height);
+  }
+}  cuboid;
 
-/*
-Unit Conversion, so far: mL~L and g~kg 
-*/
+struct {
 
-static int ml_L(double ml) {
-  //  converts mL to L
-  double output = ml / 1000;
-  return output; 
+  static int volume(double radius, double height) {
+  return (M_PI * (pow(radius, 2)) * (height/3));
+  }
+
+  static int curvedSURFACEAREA(double radius, double height)  {
+  return (M_PI * radius * height); 
+  }
+
+  static int totalSURFACEAREA(double radius, double height) {
+  return (M_PI * radius * height) + (2 * pow(radius, 2)));
   
-}
+  } 
+} cone;
 
-static int l_ML(double l) {
- 
-    //  converts L to mL
-  double output = l * 1000;
-  return output; 
-  
-}
+struct {
 
-static int g_KG(double g) {
- 
-  // converts grams to kilograms
+  static int cylVOL(double radius, double height) {
+  return (M_PI * pow(radius, 2) * height);
+  }
 
-  double output = g / 1000;
-  return output; 
-  
-}
+  static int cylCSA(double radius, double height) {
+  return (2 * M_PI * radius * height);
+  }
 
-static int kg_G(double kg) {
- 
-  // converts kilograms to grams
-  double output = kg * 1000;
-  return output; 
-  
-}
+  static int cylTSA(double radius, double height) {
+  return 2 * M_PI * radius * (height + radius);
+  }
 
-/*
-3D Geometry, Surface area and Volume  
-*/
+} cylinder;
 
-static int sphVOL(double radius) {
-  
-  // finds the volume of a sphere using the radius
-  double output = ( (4/3) * M_PI * pow(radius, 3));
-  return output;
-  
-}
+struct {
 
-/*
-Trigonometric functions not included in cmath 
-*/
-                   
-static int cot(double x) {
-  
-  // calculates the cotangent of the input number 
-  double output = 1/tan(x);
-  return output;
+  static int prismVOL (double sides, double sidelength, double height) { 
+  return (sides/4)*height*(pow(sidelength, 2)*(1/tan(M_PI/sides)));
+  }
 
-}
+  static int prismTSA(double sides, double sidelength, double height) {
+  return (sides/2)*(pow(sidelength, 2)*(1/tan(M_PI/sides))+(sides*sidelength*height));  
+  }
 
-static int sec(double x) {
-  
-  // calculates the secant of the input number
-  double output = 1/cos(x);
-  return output;
-
-}
-
-static int csc(double x) {
-  
-  // calculates the cosecant of the input number
-  double output = 1/sin(x);
-  return output;
-
-}
-                   
-
-static int sphTSA(double radius) {
- 
-  // finds the total surface area of a sphere using its radius
-  double output = (4 * M_PI * pow(radius, 2));
-  return radius;
-  
-}
-
-static int cubeVOL(double edge) {
-  
-  // finds the volume of an equal sided cube, using the edge length
-  double output = pow(edge, 2);
-  return output; 
-  
-}
-
-static int cubeTSA(double edge) {
-  
-  // finds the total surface area of the cube using the edges 
-  double output = pow((6*edge), 2); 
-  return output;
-
-}
-
-static int cubdVOL(double length, double breadth, double height) {
-  
- // finds the volume of a cuboid using the length, breadth and height
-  double output = (length * breadth * height);
-  return output;
-
-}
-
-static int cubdTSA(double length, double breadth, double height) {
-  
-  // finds the total surface area of a cuboid using the length breadth and height
-  double output = ((2*(length*breadth))+(2*(length*height))+ (2*(height*breadth)));
-  return output;
-
-}
-
-static int coneVOL(double radius, double height) {
-  
-  // finds the volume of a cone using the base radius and height
-  double output = (M_PI * (pow(radius, 2)) * (height/3));
-  return output;
-  
-}
-
-static int coneCSA(double radius, double height)  {
-  
-  // finds the curved surface area of a cone using the base radius and height
-  double output = ((M_PI * radius * height);
-  return output;
-  
-}
-static int coneTSA (double radius, double height) {
-
-  // finds the total surface area of a cone using the base radius and height
-  double output = (coneCSA(radius, height) + (2 * pow(radius, 2)));
-  return output;
-  
-}
-
-static int cylVOL(double radius, double height) {
-
-  // finds the volume of a cylinder by using the base radius and height
-  double output = (M_PI * pow(radius, 2) * height);
-  return output;
-  
-}
-static int cylCSA(double radius, double height) {
-  
-  // finds the curved surface area of a cylinder by using the base radius and height
-  double output = (2 * M_PI * radius * height);
-  return output;
-  
-}
-
-static int cylTSA(double radius, double height) {
-  
-  // finds the total surface area of a cylinder by using the base radius and height
-  double output = 2 * M_PI * radius * (height + radius);
-  return output;
-  
-}
-
-static int prismVOL (double sides, double sidelength, double height) {
-  
-  double output = (sides/4)*height*(pow(sidelength, 2)*cot(M_PI/sides)); 
-  return output;
-  
-}
-
-static int prismTSA(double sides, double sidelength, double height) {
-
-  double output = (sides/2)*(pow(sidelength, 2)*cot(M_PI/sides)+(sides*sidelength*height));
-  return output;
-    
-}
+  static int sideAREA(double sides, double sidelength, double height) {
+  return ((sides/2)*(pow(sidelength, 2)*(1/tan(M_PI/sides))+(sides*sidelength*height)/2));
+  }
+} prism; 
