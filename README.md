@@ -1,5 +1,5 @@
-# Extended Math lib for C++, Version α1.21
+# Extended Math lib for C++, Version β1.01
 
-### *Please note: This project is in Alpha
+### *Please note: This project is in Beta
 
 Contains a handful of Pythagorean, Conversion and basic Geometric calculation functions
